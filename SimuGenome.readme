@@ -1,0 +1,19 @@
+Program: SimuGenome.py
+Input: raw sequence file, such as *.fna
+Output: randomly generated text file based on nucleotide composition
+of Input
+Creator: James Denton (jfdenton)
+
+Usage: python SimuGenome.py <input_file> <output_file>
+example: python SimuGenome.py NC_010698.fna Random.fna
+
+This program, in the first function, genomeAnalyzer, computes the frequencies of
+nucleotides in the entire sequence and passes the number of
+counted bases and their respective frequency to the second function, a
+random genomeCreator. This allows a random number (randy) to determine each base 
+in the newly generated sequence and assures conservation of the
+nucleotide composition; it creates as output a random sequence based
+on the nucleotide frequencies and size of the original input.
+
+
+

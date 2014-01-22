@@ -1,0 +1,27 @@
+Simulated Sequencing Machine 'seqMachina.py'
+creator: James Denton (jfdenton)
+
+The function of this program is to simulate genome sequencing.  In this process bacterial vectors are used to chomp up the genome, capturing random sequences.  To simulate this process, random positions were selected and reads of 100 nucleotides in length were sliced out.  This was continued recursively, continuously calculating coverage until it reaches 1X.
+
+I also attempted to consider the entire sequence for reads and have given random direction (and corresponding strand reversal) to consider minus strand sequencing.  To allow the ends I spliced out the first and last 200 bases and made a string from this and allowed reads whose start position randomly was selected near the first/last 100 bases would be able to accomadate such a read and allow splicing.  When I added these two features the proportion not covered began to show variation!  Instead of always being around 36% uncovered, it now varies and can get coverage as good as 20% for 1X coverage, though appears to still average closer to 33-35% uncovered.
+
+INPUT:  a raw genome sequence file
+OUTPUT: a fasta format file containing the reads, and report the total number of positions covered in the genome, as well as that proportion that is not covered. 
+
+USAGE: python seqMachina.py -i NC_010698.fna -o reads.fasta [optional parameters]
+
+       python seqMachina.py -h  	    - gives useful program information
+
+Note: I included as an optional parameter: coverage [default = 1]
+So, for instance, you could ask for a 8X coverage of reads by:
+      
+       python seqMachina.py -i NC_010698.fna -o reads.fasta -c 8
+
+
+
+
+
+
+
+
+

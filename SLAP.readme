@@ -1,0 +1,31 @@
+Presenting SLAP.py : Smith-Waterman Local Alignment Program in Python
+creator: James Denton [jfdenton]
+
+The function of this program is to find the optimal alignment score
+between two input protein sequences.  It uses three dynamic
+programming arrays to score the alignment with the BLOSUM62 matrix and
+affine gap penalties, finding optimal solutions for each pair of
+characters from the sequences, with respect to the last pair
+considered.  In this way it will find the optimal path, and since we
+save the path in a separate array we can easily follow our markers
+back and recreate the alignment in reverse.  Finally it will more
+accurately score the alignment and report the results in the user
+specified format.
+
+INPUT: a fasta file with two entries: protein sequences to be aligned
+OUTPUT: user can specify two output formats (fasta and default)
+
+Usage: python SLAP.py -i twoseq.fasta -f FASTA -o 2seq_aligned.fasta
+ -or-
+       python SLAP.py -i twoseq.fasta -f any_string -o 2seq_aligned.output
+
+-f FASTA will create a fasta style output in the current directory
+-f any_other_string will create the default style output
+
+Also, as per optparse, you can type python: SLAP.py -h
+for detailed usage information.
+
+NOTE: This program requires that the BLOSUM62 matrix file is present
+in the directory, it will report an appropriate error if it is not
+found.
+

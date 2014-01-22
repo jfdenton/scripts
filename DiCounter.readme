@@ -1,0 +1,9 @@
+Program: DiCounter.py
+Input: 2 input files of raw sequence: real genome and simulated genome
+Output: frequencies of all possible di-nucleotides
+
+Usage: python DiCounter.py input1 input2
+Example: python DiCounter.py NC_01689.fna Simulated.txt
+
+This standalone version of diCounter function (which is within
+SimuGenome.py) will report di-nucleotide frequencies.

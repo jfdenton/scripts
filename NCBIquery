@@ -1,0 +1,36 @@
+#! /usr/bin/python
+
+import cgi, random, BioSQL, sys, os, math, urllib, urllib2
+from Bio import Entrez
+from Bio import SeqIO
+from Bio.Blast import NCBIWWW
+from Bio.Blast import NCBIXML
+#import fasta_reader
+#help(NCBIWWW.qblast)  #activate to see all blast parameters
+
+Entrez.email = "jfdenton@indiana.edu"
+
+print "\n-=Entrez Query=-"
+usage = "\nUsage: equery <genus> <keyword1> <keyword2> <keyword3> ... <keyword4> \n"
+genes = []
+#genus and search terms originally hardcoded for testing, now accepted as input
+names = ['Escherichia coli']
+terms = ['gene']
+
+#eUtils function, performs eSearch and eFetch, passes record object, with id/sequence, to blaster
+def query():
+    for genus in names:
+        for search in terms:
+            query_string = genus +'[Orgn]' + ' AND ' + search + '[KWD]'
+            print query_string
+            search_result = Entrez.esearch(db="nucleotide", term=query_string, retmax=400)
+            ids = Entrez.read(search_result)
+            for id in ids["IdList"]:
+                handle = Entrez.efetch(db='nucleotide', id=id, rettype="fasta")
+                record = SeqIO.read(handle, "fasta")
+                if len(record.seq) < 3000 and len(record.seq) > 200 and record.seq[:3] == 'ATG':
+                    genes.append(record)
+           
+query()
+SeqIO.write(genes, "ecoli_genes.fasta", "fasta")
+

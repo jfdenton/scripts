@@ -1,0 +1,18 @@
+Program: PatternSearch2.py
+Input: pattern (python, string, or prosite format) and sequence file
+Output: number of occurences of matched pattern, as well as lines and positions the pattern was matched at (output to a text file whose name is based off of input file name and the pattern)
+
+Creator: James Denton (jfdenton)
+
+Usage: python PatternSearch2.py <pattern_to_match> <input_file> <output_file>
+example: python PatternSearch2.py [AG].{4}GK[ST] NC_010698.faa
+
+
+This program, an extension of my more basic PatternSearch.py, is an attempt at the suggested extra credit mentioned in lab.  I have managed to gather information about the lines and the positions within those lines for ~99% of matched patterns (I did not determine a method to get lines/coordinates from that single pattern match that occured between two lines)
+
+
+
+
+
+
+

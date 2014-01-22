@@ -1,0 +1,24 @@
+Program: BioTranslator.py
+Input: fasta formatted file of nucleotide sequences
+Output: generates as output a fasta-like file containing the header field of the original sequence, as well as the 3 possible protein sequences based on 3 frames for both forward and reverse strands.
+
+Creator: James Denton (jfdenton)
+
+Usage: python BioTranslator.py <input file> <output file>
+example: python BioTranslator.py sampleseq.txt proteins.txt
+
+This program first builds a dictionary of the codon -> protein conversions, saving the codon as the key.  It can build this codon dictionary from codon.txt if it is present in the folder, or it will construct it from strings.  Next it moves through the sequence file parsing out the header fields as names and the sequences, saving to gigantor list.  It moves through this list, calling upon codonExtract and using a shift counter to create 3 lists for the forward strand, and using reverseComp to create 3 lists for the reverse strand.  These lists are then translated into proteins with the dictionary created in the first step, turned back into a list to be sorted, and then written out to the specified output file in a 'somehwat' fasta like format.
+In my testing fastas with Ns in the sequence are ambiguous and my current codon to protein dictionary cannot accept a key with Ns, so if my program attempts to convert CNN to a protein it will certainly crash.  To prevent this I am converting directly to one of the four bases, but testing with sampleseq.txt, or other regular fastas, this is not a problem anyway and the loops will never be reached. Enjoy!
+
+>>Header
+>Forward
+Seq1
+..
+Seq3
+>Reverse
+Seq1
+..
+
+
+
+

@@ -1,0 +1,16 @@
+Program: PatternSearch.py
+Input: pattern (python, string, or prosite format) and sequence file
+Output: number of occurences of matched pattern
+
+Creator: James Denton (jfdenton)
+
+Usage: python PatternSearch.py <pattern_to_match> <input_file>
+example: python PatternSearch.py [AG].{4}GK[ST] NC_010698.faa
+
+
+This is the more basic of my two patternsearch programs.  It simply reports occurences of the matched pattern, but attempts to accept prosite format as well as python and regular strings.  Enjoy!
+
+
+
+
+
